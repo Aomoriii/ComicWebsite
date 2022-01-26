@@ -1,0 +1,271 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block banner %}
+<style>
+     .carousel-inner {
+         width:100%;
+         height: 450px;
+         overflow: hidden;
+     }
+    .carousel-inner img {
+        margin: 0;
+    }
+
+
+</style>
+    <div class="ui labels">
+        {% for category in categorys %}
+            <a class="ui label" href="{{ category.get_absolute_url }}">
+            {{ category.type_name }}
+          </a>
+        {% endfor %}
+
+
+	</div>
+
+    <div class="ui container segment" style="background-color: #B0C4DE"  >
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="" alt="...">
+                </div>
+
+              </div>
+            </div>
+    </div>
+
+{% endblock banner %}
+
+
+
+
+{% block main %}
+<style>
+
+.recent-update.new {
+    width:1200px;
+    margin:0 auto;
+    height: 110px;
+    position: relative;
+}
+div.recent-update {
+    margin-top: 70px;
+}
+
+div.recent-update.new div.bottom h1{
+    font-size: 20px;
+    color: rgb(51, 51, 51);
+    margin:0;
+    height: 27px;
+    width: 150px;
+    float: left;
+    display: block;
+    margin-bottom: 5px;
+    overflow: hidden;
+
+}
+div.recent-update.new h1 {
+    font-size: 28px;
+    color: rgb(51, 51, 51);
+    margin-top: 80px;
+    height: 37px;
+    margin-bottom: 20px;
+    margin-left: 50px;
+    width: 150px;
+    float: left;
+    display: block;
+}
+
+div.recent-update .more {
+    color: #666;
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    float: right;
+    display: table-cell;
+    vertical-align: bottom;
+    padding-top: 88px;
+    margin-right: 40px;
+}
+div.recent-update ul.update-content {
+    padding: 50px;
+    padding-top: 140px;
+    display: block;
+    height: auto;
+}
+div.recent-update ul.update-content li {
+    cursor: pointer;
+    list-style: none;
+    width: 154px;
+    height: 300px;
+    display: block;
+    float: left;
+    margin-right: 10px;
+    margin-left: 17px;
+    margin-bottom: 18px;
+    position: relative;
+}
+div.recent-update ul.update-content li div.wrap {
+    width: 157px;
+    height: 230px;
+}
+div.recent-update ul.update-content li.div.wrap h1 {
+    width: 100%;
+    font-size: 18px;
+    margin-bottom: 0;
+    height: 52px;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    line-height: 25px;
+}
+div.wrap h2 {
+    font-size: 14px;
+    margin-bottom: 9px;
+    display: block;
+    height: 20px;
+    width: 135px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}
+div.wrap span {
+    font-size: 14px;
+    color: #adadad;
+    margin-top: 10px;
+}
+div.recent-update ul.update-content li div.wrap a {
+    text-decoration: none;
+    color: #6b2d80;
+    font-size: 14px;
+    margin-left: 10px;
+}
+{#  #}
+.recent-update.rank {
+    width:1200px;
+    margin: auto;
+    height: 110px;
+    position: relative;
+    margin-top: 690px;
+}
+div.recent-update.rank div.bottom h1{
+    font-size: 20px;
+    color: rgb(51, 51, 51);
+    margin:0;
+    height: 26px;
+    width: 150px;
+    float: left;
+    margin-bottom: 5px;
+
+    display: block;
+    overflow: hidden;
+
+}
+div.recent-update.rank h1 {
+    font-size: 28px;
+    color: rgb(51, 51, 51);
+    margin-top: 80px;
+    height: 37px;
+    margin-bottom: 20px;
+    margin-left: 50px;
+    width: 150px;
+    float: left;
+    display: block;
+}
+.ui.container.segment{
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+div.recent-update.tags h1 {
+    font-size: 28px;
+    color: rgb(51, 51, 51);
+    margin-top: -40px;
+    height: 37px;
+    margin-bottom: 0;
+    margin-left: 50px;
+    width: 150px;
+    float: left;
+    display: block;
+}
+.recent-update.tags {
+    width:1200px;
+    margin:0 auto;
+    height: 110px;
+    position: relative;
+    margin-top: 0px;
+}
+a.ui.label{
+    background-color:#B0C4DE ;
+
+    height: 30px;
+}
+div.ui.labels{
+{#	margin-top: 15px;#}
+{#	margin-left: 200px;#}
+    width: 1127px;
+    margin: auto;
+    margin-top: 15px;
+}
+
+
+</style>
+
+    <!-- new-->
+            <div class="recent-update new">
+                <h1>最近更新</h1>
+                <a class="more" href="" target="_blank">更多>></a>
+                <ul class="update-content">
+                    {% for recent_comic in recent_comics %}
+                         <li>
+                            <a href="{{ recent_comic.get_absolute_url }}" style="margin-left: 0;color: #333" target="_blank">
+                                <div class="wrap">
+                                    <img src="{{ recent_comic.pictures }} " width="100%" height="230px" title="{{ recent_comic.comic_name }}">
+                                    <div class="bottom" style="">
+                                        <h1 title="{{ recent_comic.comic_name }}">{{ recent_comic.comic_name }}</h1>
+                                        <h2>{{ recent_comic.author }}</h2>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    {% endfor %}
+
+
+                    <div style="clear: both"></div>
+                </ul>
+            </div>
+      <!---->
+
+        <!-- rank-->
+        <div class="recent-update rank">
+            <h1>排名</h1>
+
+            <a class="more" href="/rank" target="_blank">更多>></a>
+            <ul class="update-content">
+                {% for rank_comic in rank_comics %}
+                    <li>
+                        <a href="/" style="margin-left: 0;color: #333"
+                               target="_blank">
+                        <div class="wrap">
+                            <img src="{{ rank_comic.pictures }}" width="100%" height="230px" title="{{ rank_comic.comic_name  }}">
+                            <div class="bottom" style="">
+                                <h1 title="{{ rank_comic.comic_name  }}">{{ rank_comic.comic_name  }}</h1>
+                                <h2>{{ rank_comic.author }}</h2>
+                            </div>
+                        </div>
+                        </a>
+                    </li>
+
+                {% endfor %}
+                <div style="clear: both"></div>
+            </ul>
+        </div>
+
+
+
+{% endblock main%}

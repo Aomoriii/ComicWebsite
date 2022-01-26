@@ -1,0 +1,205 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+
+<style>
+
+	div.wrap {
+	    width: 1127px;
+		height: 800px;
+	    margin: 0 auto;
+	}
+	section.detail {
+	    min-height: 233px;
+	    background-color: #B0C4DE;
+	    margin-top: 88px;
+	    position: relative;
+	    padding-left: 301px;
+	    padding-top: 30px;
+	    padding-bottom: 37px;
+		margin-bottom: 40px;
+		border-radius: 5px;
+	}
+	section.detail img.large {
+	    width: 251px;
+	    height: 334px;
+	    position: absolute;
+	    top: -48px;
+	    left: 39px;
+	    border-radius: 5px;
+	    box-shadow: 2px 2px 2px 1px #888888;
+	}
+	section.detail h1 {
+	    font-weight: normal;
+	    color: #333;
+	    font-size: 30px;
+	    width: 500px;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    display: -webkit-box;
+	    -webkit-box-orient: vertical;
+	    -webkit-line-clamp: 1;
+	}
+	section.detail h2 {
+	    font-size: 14px;
+	    color: #666;
+	    font-weight: normal;
+	    margin-top: 14px;
+	    width: 500px;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    display: -webkit-box;
+	    -webkit-box-orient: vertical;
+	    -webkit-line-clamp: 1;
+	}
+	section.detail .type {
+	    margin-top: 11px;
+	}
+	section.detail span.type-left {
+	    color: #999;
+	    font-size: 14px;
+	}
+	section.detail .type span:nth-of-type(2n) {
+	    margin-right: 38px;
+	}
+	section.detail p {
+	    font-size: 14px;
+	    color: #666;
+	    line-height: 20px;
+	    width: 706px;
+	    margin-top: 13px;
+	}
+	section.detail section.bottom {
+	    height: 40px;
+	    margin-top: 15px;
+	}
+	section.detail section.bottom button {
+	    width: 82px;
+	    height: 36px;
+	    background-color: #4682B4;
+	    color: white;
+	    border: 1px solid #adc1db;
+	    border-radius: 7px;
+	    float: left;
+	    outline: none;
+	    cursor: pointer;
+	}
+	a {
+	    text-decoration: none;
+	}
+
+
+	.chapter {
+	    height: auto;
+		margin-top: 80px;
+	}
+	.chapter_top {
+
+	    margin: 0 auto;
+	    height: auto;
+	    margin-top: 47px;
+		margin-left: 30px;
+		margin-right: 30px;
+	}
+	.chapter_top_header {
+	   /* width: 1100px; */
+	    height: 40px;
+	}
+	.chapter_top_header span:nth-of-type(1) {
+	    font-size: 18px;
+	    color: #333;
+	}
+	.chapter_top_header span:nth-of-type(2) {
+	    font-size: 18px;
+	    color: #333;
+	    margin-left: 57px;
+	}
+	.chapter_top_header span:nth-of-type(3) {
+	    font-size: 18px;
+	    color: #333;
+	    margin-left: 10px;
+	}
+	.chapter_top_header span:nth-of-type(4) {
+	    font-size: 16px;
+	    margin-left: 48px;
+	}
+
+	.chapter_top_header a {
+	    float: right;
+	    display: block;
+	    font-size: 16px;
+	    color: #999;
+	    position: relative;
+	    width: 57px;
+	}
+	.chapter_top_content {
+	    height: auto;
+	}
+	.chapter_top_content section {
+	    width: 252px;
+	    height: 41px;
+	    background-color: #F0F8FF;
+	    color: #333;
+	    font-size: 16px;
+	    float: left;
+	    margin-right: 14px;
+	    margin-bottom: 16px;
+		border-radius: 5px;
+
+	}
+	.chapter_top_content section span {
+	    line-height: 41px;
+	    margin-left: 23px;
+	}
+
+</style>
+
+
+    <div class="wrap">
+
+	        <section class="detail">
+                <img src="{{ comic_details.pictures }}"  alt="" class="large">
+	            <h1>{{ comic_details.comic_name }}</h1>
+	            <h2>{{ comic_details.author }}</h2>
+	            <div class="type">
+	                <span class="type-left">状态</span>
+	                <span class="type-right">连载中</span>
+	                <span class="type-left">类型</span>
+	                <span class="type-right">{{ comic_details.category.type_name }}</span>
+	            </div>
+	            <p>{{ comic_details.context }}
+	            </p>
+
+	                <section class="bottom">
+						<button>
+							<a href="/"
+							   style="color: white"
+							   target="_blank">开始阅读</a>
+						</button>
+	                </section>
+	        </section>
+
+
+			<section class="chapter">
+				<div class="chapter_top">
+					<div class="chapter_top_header">
+{#							<span>01</span>#}
+{#							<span>2019-04-28</span>#}
+
+{#						<a href="javascript:">顺序<span></span></a>#}
+					</div>
+					<div class="chapter_top_content">
+                        {% for comic_chapter in comic_chapters %}
+                            <section>
+                                <a href="{{ comic_chapter.get_absolute_url }}"  target="_blank" style="display: inline-block;width: 100%;color: #333">
+                                    <span>{{ comic_chapter.charter_name }}</span>
+                                </a>
+                            </section>
+                        {% endfor %}
+
+		            </div>
+                </div>
+            </section>
+    </div>
+{% endblock main %}
+

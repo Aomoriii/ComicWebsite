@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main %}
+    <div class="ui raised  container segment" >
+                {% for src in comic_srcs %}
+                <img class="ui fluid image" src="{{ src }}">
+                {% endfor %}
+
+    </div>
+{% endblock main %}

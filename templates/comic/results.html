@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+
+<style>
+
+	div.wrap {
+	    width: 1127px;
+		height: 800px;
+	    margin: 0 auto;
+	}
+	section.detail {
+	    min-height: 233px;
+	    background-color: #B0C4DE;
+	    margin-top:150px;
+	    position: relative;
+	    padding-left: 301px;
+	    padding-top: 30px;
+	    padding-bottom: 40px;
+		margin-bottom: 40px;
+		border-radius: 5px;
+	}
+	section.detail img.large {
+	    width: 251px;
+	    height: 334px;
+	    position: absolute;
+	    top: -48px;
+	    left: 39px;
+	    border-radius: 5px;
+	    box-shadow: 2px 2px 2px 1px #888888;
+	}
+	section.detail h1 {
+	    font-weight: normal;
+	    color: #333;
+	    font-size: 30px;
+	    width: 500px;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    display: -webkit-box;
+	    -webkit-box-orient: vertical;
+	    -webkit-line-clamp: 1;
+	}
+	section.detail h2 {
+	    font-size: 14px;
+	    color: #666;
+	    font-weight: normal;
+	    margin-top: 14px;
+	    width: 500px;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    display: -webkit-box;
+	    -webkit-box-orient: vertical;
+	    -webkit-line-clamp: 1;
+	}
+	section.detail .type {
+	    margin-top: 11px;
+	}
+	section.detail span.type-left {
+	    color: #999;
+	    font-size: 14px;
+	}
+	section.detail .type span:nth-of-type(2n) {
+	    margin-right: 38px;
+	}
+	section.detail p {
+	    font-size: 14px;
+	    color: #666;
+	    line-height: 20px;
+	    width: 706px;
+	    margin-top: 13px;
+	}
+	section.detail section.bottom {
+	    height: 40px;
+	    margin-top: 15px;
+	}
+	section.detail section.bottom button {
+	    width: 82px;
+	    height: 36px;
+	    background-color: #4682B4;
+	    color: white;
+	    border: 1px solid #adc1db;
+	    border-radius: 7px;
+	    float: left;
+	    outline: none;
+	    cursor: pointer;
+	}
+	a {
+	    text-decoration: none;
+	}
+
+
+
+
+</style>
+        {% if error_msg %}
+            <p>{{ error_msg }}</p>
+        {% endif %}
+
+    <div class="wrap">
+        {% for comic in comic_list %}
+	        <section class="detail">
+                <img src="{{ comic.pictures }}"  alt="" class="large">
+	            <h1>{{ comic.comic_name }}</h1>
+	            <h2>{{ comic.author }}</h2>
+	            <div class="type">
+	                <span class="type-left">状态status</span>
+	                <span class="type-right">连载中</span>
+	                <span class="type-left">类型</span>
+	                <span class="type-right">{{ comic.category }}</span>
+	            </div>
+	            <p>{{ comic.context }}
+	            </p>
+
+	                <section class="bottom">
+						<button>
+							<a href="{{ comic.get_absolute_url }}"
+							   style="color: white"
+							   target="_blank">开始阅读</a>
+						</button>
+	                </section>
+	        </section>
+        {% endfor %}
+
+
+    </div>
+{% endblock main %}
+
+
+

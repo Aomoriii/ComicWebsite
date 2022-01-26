@@ -1,0 +1,15 @@
+# 配置文件
+settings.py
+
+# 迁移数据文件
+*/migrations/*.py
+
+.idea/
+
+# Python:
+*.py[cod]
+*.so
+*.egg
+*.egg-info
+dist
+build
