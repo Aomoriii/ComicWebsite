@@ -13,3 +13,7 @@ settings.py
 *.egg-info
 dist
 build
+
+static
+
+__init__.py
