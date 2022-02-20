@@ -7,6 +7,7 @@ from django.db import models
 from django.urls import reverse
 # Create your models here.
 
+
 class Category(models.Model):
     id = models.IntegerField(primary_key=True)
     type_name = models.CharField(max_length=255)
@@ -19,7 +20,7 @@ class Category(models.Model):
         db_table = 'Category'
 
     def get_absolute_url(self):
-        return reverse('comic:category_list',kwargs={'pk':self.id})
+        return reverse('comic:category_list', kwargs={'pk': self.id})
 
 
 class Comic(models.Model):
@@ -35,13 +36,13 @@ class Comic(models.Model):
         db_table = 'Comic'
 
     def get_absolute_url(self):
-        return reverse('comic:comic_chapter_list',kwargs={'comic_pk':self.comic_id})
+        return reverse('comic:comic_chapter_list', kwargs={'comic_pk': self.comic_id})
 
 
 class Charter(models.Model):
     charter_id = models.IntegerField(primary_key=True)
     charter_name = models.CharField(max_length=255)
-    comic_id = models.ForeignKey('Comic',models.DO_NOTHING)
+    comic_id = models.ForeignKey('Comic', models.DO_NOTHING)
     src = models.CharField(max_length=10000)
 
     class Meta:
@@ -49,4 +50,4 @@ class Charter(models.Model):
         db_table = 'Charter'
 
     def get_absolute_url(self):
-        return reverse('comic:chapter_src',kwargs={'charter_pk':self.charter_id})
+        return reverse('comic:chapter_src', kwargs={'charter_pk': self.charter_id})
